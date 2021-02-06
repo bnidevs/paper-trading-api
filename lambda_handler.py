@@ -39,7 +39,7 @@ def buystock(username, ticker, numshares):
         return prep_return("No such ticker symbol")
 
     marketopen = resp['quoteResponse']['result'][0]['marketState']
-    if marketopen == "POST" or marketopen == "PRE":
+    if marketopen == "POST" or marketopen == "PRE" or marketopen == "CLOSED":
         return prep_return("Market not open")
 
     check_exists = table.query(
@@ -80,7 +80,7 @@ def sellstock(username, ticker, numshares):
         return prep_return("No such ticker symbol")
 
     marketopen = resp['quoteResponse']['result'][0]['marketState']
-    if marketopen == "POST" or marketopen == "PRE":
+    if marketopen == "POST" or marketopen == "PRE" or marketopen == "CLOSED":
         return prep_return("Market not open")
 
     check_exists = table.query(
